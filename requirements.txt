@@ -1,0 +1,36 @@
+# --- AI 에이전트 및 오케스트레이션 ---
+langchain>=0.1.0
+langgraph>=0.0.10
+langchain-groq        # Groq 전용 커넥터 추가
+python-dotenv
+
+# --- 데이터 분석 및 시각화 ---
+pandas>=1.4.2
+numpy
+matplotlib>=3.5.1
+seaborn
+plotly>=5.10.0
+
+# --- 머신러닝 및 수학 ---
+scikit-learn>=1.1.3
+tensorflow>=2.5.0
+scipy
+
+# --- 데이터베이스 및 검색 엔진 ---
+psycopg2-binary        # PostgreSQL 연동
+opensearch-py          # OpenSearch 하이브리드 검색
+faiss-cpu>=1.7.4       # 로컬 벡터 검색
+networkx               # 배터리 계층 구조 그래프 (AASX)
+
+# --- 기술 지식 추출 및 전처리 ---
+pypdf                  # 가이드북 PDF 파싱
+lxml                   # AASX(XML) 파싱
+tqdm                   # 대용량 데이터 처리 진행바
+
+# --- 품질 검증 및 평가 ---
+ragas                  # LLM 평가 지표 (Faithfulness 등)
+
+# --- 개발 환경 및 데모 ---
+jupyterlab-lsp
+python-lsp-server
+streamlit              # 데모 UI 개발

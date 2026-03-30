@@ -1,0 +1,30 @@
+{
+  "@jupyterlab/apputils-extension:themes": {
+    "theme": "JupyterLab Dark"
+  },
+  "@jupyterlab/fileeditor-extension:plugin": {
+    "editorConfig": {
+      "lineNumbers": true,
+      "lineWrap": "on",
+      "fontSize": 14,
+      "autoClosingBrackets": true,
+      "matchBrackets": true
+    }
+  },
+  "@jupyterlab/notebook-extension:tracker": {
+    "notebookConfig": {
+      "lineNumbers": true,
+      "lineWrap": "on",
+      "fontSize": 14,
+      "autoClosingBrackets": true,
+      "matchBrackets": true
+    }
+  },
+  "@jupyterlab/filebrowser-extension:browser": {
+    "showHiddenFiles": false
+  },
+  "@jupyterlab/terminal-extension:plugin": {
+    "fontSize": 14,
+    "theme": "dark"
+  }
+}

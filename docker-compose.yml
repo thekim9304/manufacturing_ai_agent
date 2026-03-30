@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # 1. 주피터랩 환경 (기존 코드)
+  lab:
+    build: .
+    ports:
+      - "8888:8888"
+      - "8501:8501" # Streamlit 포트 추가
+    volumes:
+      - .:/home/jovyan/project
+    env_file:
+      - .env
+    working_dir: /home/jovyan/project/workspace
+    container_name: jupyter-lab-pro-project
+    depends_on:
+      - opensearch # OpenSearch가 먼저 떠야 함
+    command: >
+      jupyter lab
+      --notebook-dir=/home/jovyan/project/workspace
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --allow-root
+      --NotebookApp.token=''
+      --NotebookApp.password=''
+
+  # 2. OpenSearch 엔진 (추가)
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    container_name: battery-opensearch
+    environment:
+      - cluster.name=battery-cluster
+      - node.name=battery-node
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # 메모리 제한 (최소 512MB 권장)
+      - DISABLE_INSTALL_DEMO_CONFIG=true # 데모 보안 설정 비활성화 (로컬 개발용)
+      - DISABLE_SECURITY_PLUGIN=true      # HTTP로 편하게 접속하기 위해 보안 끔
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200" # REST API 포트
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data # 데이터 영구 저장
+
+  # 3. OpenSearch Dashboards (선택사항이지만 데이터 확인용으로 강추)
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: battery-dashboards
+    ports:
+      - "5601:5601"
+    environment:
+      - OPENSEARCH_HOSTS=["http://opensearch:9200"]
+      - DISABLE_SECURITY_PLUGIN=true
+
+volumes:
+  opensearch-data:
