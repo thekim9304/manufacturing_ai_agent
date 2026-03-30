@@ -1,3 +1,14 @@
+# 🏗️ System Architecture
+![System Architecture](./images/Main_Stream.png)
+*LangGraph를 활용한 Multi-Agent 오케스트레이션 및 상태 관리 흐름도*
+### 📊 Data Expert (Text2SQL)
+![Data Agent](./images/Data_agent.png)
+[cite_start]*1.1억 건의 제조 로그 분석을 위한 시맨틱 스키마 매핑 및 SQL 생성 과정*
+
+### 📚 Knowledge Expert (CRAG & RAG)
+![Knowledge Agent](./images/Knowledge_agent.png)
+[cite_start]*Hybrid Search 기반 지식 추출 및 CRAG 알고리즘을 통한 답변 교정 루프*
+
 # 🔋 HMG Battery QA Multi-Agent System
 1.1억 건의 제조 데이터와 기술 가이드북을 결합한 지능형 품질 관제 에이전트
 
